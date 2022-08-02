@@ -72,6 +72,80 @@ app.get('/user/:id', (req, res) => {
     });
 });
 
+// Create Data
+app.post('/user', (req, res) => {
+    // console.log('postdata')
+    // console.log(req.body, 'createdata')
+
+    let lastName = req.body.lastname;
+    let firstName = req.body.firstname;
+    let eMail = req.body.email;
+    let mobilePhone = req.body.mobile;
+
+    let qr = `insert into user(firstname, lastname, email,mobile)
+              value('${firstName}', '${lastName}', '${eMail}', '${mobilePhone}')`;
+    
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        res.send({
+            message: 'Data Inserted'
+        })
+        // if (result.length > 0) {
+        //     res.send({
+        //         message: 'Data Inserted'
+        //     });
+        // } else {
+        //     res.send({
+        //         message: 'Data Insert Error...'
+        //     });
+        // }
+    });
+});
+
+// Update Single Data
+app.put('/user/:id', (req, res) => {
+    //console.log(req.body, 'update data')
+
+    let getID = req.params.id;
+
+    let lastName = req.body.lastname;
+    let firstName = req.body.firstname;
+    let eMail = req.body.email;
+    let mobilePhone = req.body.mobile;
+
+    let qr = `update user set lastname='${lastName}', firstname='${firstName}', email='${eMail}', mobile='${mobilePhone}'
+              where id=${getID}`;
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err);
+        } 
+        res.send({
+            message: 'Data Updated'
+        })
+    })
+})
+
+// Delete Single Data
+app.delete('/user/:id', (req, res) => {
+    let queryID = req.params.id;
+
+    let qr = `delete from user where id = ${queryID}`
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        res.send({
+            message: 'Data Deleted'
+        });
+    });
+});
+
+
 
 app.listen(3000, () => {
     console.log('Server Running...')
