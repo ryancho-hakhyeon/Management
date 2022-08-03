@@ -2,6 +2,7 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
+require('dotenv/config')
 
 const app = express();
 
@@ -150,4 +151,3 @@ app.delete('/user/:id', (req, res) => {
 app.listen(3000, () => {
     console.log('Server Running...')
 });
-
