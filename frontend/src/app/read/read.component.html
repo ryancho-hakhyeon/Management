@@ -1,5 +1,12 @@
 <div class="container">
-  <table class="table ">
+
+  <!-- Show Message -->
+  <div *ngIf="successmsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{successmsg}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -7,6 +14,7 @@
         <th scope="col">Last Name</th>
         <th scope="col">E-Mail</th>
         <th scope="col">Mobile Number</th>
+        <th scope="col">Edits</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +24,11 @@
         <td>{{ us.lastname }}</td>
         <td>{{ us.email }}</td>
         <td>{{ us.mobilephone }}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="deleteID(us.id)">Delete</button>
+          &nbsp;
+          <a [routerLink]="['/create', us.id]" class="btn btn-sm btn-success">Update</a>
+        </td>
       </tr>
 
     </tbody>
