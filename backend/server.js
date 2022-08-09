@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
-const mysql = require('mysql2');
+const mysql = require('mysql');
 require('dotenv/config')
 
 const app = express();
@@ -11,11 +11,12 @@ app.use(bodyparser.json());
 
 // Database Connection
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: '',   // Database Name
-    port: 3306
+    // Database Information
+    port: process.env.DB_PORT,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PW,
+    database: process.env.DB_NAME,   
 });
 
 // Check Database Connection
@@ -29,17 +30,17 @@ db.connect(err => {
 
 
 // Get All Data
-app.get('/user', (req, res) => {
+app.get('/workers', (req, res) => {
     // console.log('get all users data');
 
-    let qr = `select * from user`;
-
+    let qr = `select * from workers`;
+    
     db.query(qr, (err, result) => {
         if (err) {
             console.log(err, 'errs');
         }
-
-        if (result.length > 0) {
+        if (result.length > 0){
+            console.log(result)
             res.send({
                 message: 'All User Data',
                 data: result
@@ -49,12 +50,12 @@ app.get('/user', (req, res) => {
 });
 
 // Get Signal Data
-app.get('/user/:id', (req, res) => {
+app.get('/workers/:id', (req, res) => {
     // console.log('get signal data')
     // console.log(req.params.id, 'getid')
 
     let getID = req.params.id;
-    let qr = `select * from user where id = ${getID}`
+    let qr = `select * from workers where id = ${getID}`
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -65,6 +66,7 @@ app.get('/user/:id', (req, res) => {
                 message: 'Get Signal Data',
                 data: result
             });
+            console.log(result)
         } else {
             res.send({
                 message: 'Data Not Found'
@@ -74,17 +76,17 @@ app.get('/user/:id', (req, res) => {
 });
 
 // Create Data
-app.post('/user', (req, res) => {
+app.post('/workers', (req, res) => {
     // console.log('postdata')
     // console.log(req.body, 'createdata')
 
     let lastName = req.body.lastname;
     let firstName = req.body.firstname;
     let eMail = req.body.email;
-    let mobilePhone = req.body.mobile;
+    let mobileN = req.body.mobile;
 
-    let qr = `insert into user(firstname, lastname, email,mobile)
-              value('${firstName}', '${lastName}', '${eMail}', '${mobilePhone}')`;
+    let qr = `insert into workers(firstname, lastname, email,mobile)
+              value('${firstName}', '${lastName}', '${eMail}', '${mobileN}')`;
     
     db.query(qr, (err, result) => {
         if (err) {
@@ -106,7 +108,7 @@ app.post('/user', (req, res) => {
 });
 
 // Update Single Data
-app.put('/user/:id', (req, res) => {
+app.put('/workers/:id', (req, res) => {
     //console.log(req.body, 'update data')
 
     let getID = req.params.id;
@@ -114,9 +116,9 @@ app.put('/user/:id', (req, res) => {
     let lastName = req.body.lastname;
     let firstName = req.body.firstname;
     let eMail = req.body.email;
-    let mobilePhone = req.body.mobile;
+    let mobileN = req.body.mobile;
 
-    let qr = `update user set lastname='${lastName}', firstname='${firstName}', email='${eMail}', mobile='${mobilePhone}'
+    let qr = `update workers set lastname='${lastName}', firstname='${firstName}', email='${eMail}', mobile='${mobileN}'
               where id=${getID}`;
 
     db.query(qr, (err, result) => {
@@ -130,10 +132,10 @@ app.put('/user/:id', (req, res) => {
 })
 
 // Delete Single Data
-app.delete('/user/:id', (req, res) => {
+app.delete('/workers/:id', (req, res) => {
     let queryID = req.params.id;
 
-    let qr = `delete from user where id = ${queryID}`
+    let qr = `delete from workers where id = ${queryID}`
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -148,6 +150,6 @@ app.delete('/user/:id', (req, res) => {
 
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server Running...')
 });
