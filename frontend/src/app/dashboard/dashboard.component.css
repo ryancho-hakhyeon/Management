@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.title__container{
+  margin: 2.5rem;
+  width: 20%;
+  height: 3.7rem;
+  background: blue;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title__container h4{
+  color: white;
+  margin: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.total_container {
+
+}
+
+.total__employees-list{
+  margin: 2.5rem;
+}

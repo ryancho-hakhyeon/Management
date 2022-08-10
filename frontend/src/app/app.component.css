@@ -1,0 +1,25 @@
+
+.container__taps{
+  margin-top: 1rem;
+}
+
+.container__taps h1{
+  float: left;
+  margin: 1rem 1rem 1rem 1rem;
+}
+
+.tap__list {
+  padding: 0;
+  margin-left: 1rem;
+  text-align: center;
+}
+
+.nav-link, a{
+  color: white;
+  text-align: center;
+}
+
+.nav-link, a::after{
+  color: white;
+}
+

@@ -1,11 +1,38 @@
-<div class="container mt-5">
-  <h1>Work Time Schedule Management</h1>
-  <a routerLink="create" class="btn btn-success">Create</a>
-  &nbsp;
-  <a routerLink="read" class="btn btn-primary">Read</a>
-  <!-- &nbsp; -->
-  <!-- <a routerLink="workdone" class="btn btn-primary">Work Done</a> -->
+<header>
+  <div class="px-3 py-2 bg-dark text-white">
+    <div class="container__taps">
+      <h1>WorkerTS</h1>
 
-  <router-outlet></router-outlet>
-</div>
+      <ul class="nav justify-content-end" >
+        <li class="tap__list" >
+          <a routerLink=""><span class="material-icons">home</span></a>
+          <a routerLink="" class="nav-link">Home</a>
+        </li>
+        <li class="tap__list" >
+          <a routerLink="dashboard"><span class="material-icons">dvr</span></a>
+          <a routerLink="dashboard" class="nav-link">Dashboard</a>
+        </li>
+        <li class="tap__list" >
+          <a routerLink="today"><span class="material-icons">today</span></a>
+          <a routerLink="today" class="nav-link">Today's</a>
+        </li>
+        <li class="tap__list" >
+          <a routerLink="work"><span class="material-icons">work</span></a>
+          <a routerLink="work" class="nav-link">Working</a>
+        </li>
+        <li class="tap__list" >
+          <a routerLink="done"><span class="material-icons">done_all</span></a>
+          <a routerLink="done" class="nav-link">Done</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</header>
+
+
+<router-outlet></router-outlet>
+
+
+
 
