@@ -4,7 +4,7 @@
   margin: 2.5rem;
   width: 20%;
   height: 3.7rem;
-  background: blue;
+  background: #92a8d1;
   border-radius: 18px;
   display: flex;
   align-items: center;
@@ -17,10 +17,36 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.total_container {
-
+.total__container {
+  margin: 1rem;
 }
 
 .total__employees-list{
   margin: 2.5rem;
+  width: auto;
 }
+
+.total__container {
+  margin: 0 4rem 0 4rem;
+  display: block;
+}
+
+.total__content {
+  display: flex;
+  gap: 20%
+}
+.total__content > p{
+  font-size: larger;
+  font-weight: 500;
+  width: 17rem;
+}
+
+.button__container {
+  margin: 0 3rem 1rem 0;
+  float: right;
+  display: flex;
+  gap: 10px;
+}
+
+
+

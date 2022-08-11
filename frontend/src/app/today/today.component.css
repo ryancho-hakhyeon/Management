@@ -1,0 +1,47 @@
+
+.search__continer {
+  border-radius: 15px;
+  margin: 2rem 1rem;
+  display: flex;
+}
+
+.search__continer > div > p {
+  margin: 0;
+  width: 5rem;
+  text-align: left;
+  font-weight: 500;
+  padding: auto;
+}
+
+.search__continer > div {
+  height: fit-content;
+  width: 90%;
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.button__continer {
+  margin: 0 0 2rem 2rem;
+}
+
+.worked__container {
+  display: flex;
+  margin: 0 2rem 1rem 5rem;
+  gap: 8em;
+  font-weight: 600;
+  font-size: larger;
+}
+
+.container__table {
+  margin: 2rem;
+  height: 20%;
+  border: 2px inset;
+  overflow: scroll;
+}
+
+
+
+
+
+

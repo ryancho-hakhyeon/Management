@@ -6,10 +6,24 @@
     <h4>TOTAL ANALAYSIS</h4>
   </div>
 
-  <div class="total_container">
-    <p>Total Employees</p>
-    <p>Today's Commuters</p>
-    <p>Holiday Takers</p>
+  <div class="total__container">
+    <div class="total__content">
+      <p>Total Employees</p>
+      <p>data</p>
+    </div>
+    <div class="total__content">
+      <p>Today's Commuters</p>
+      <p>data</p>
+    </div>
+    <div class="total__content">
+      <p>Holiday Takers</p>
+      <p>data</p>
+    </div>
+  </div>
+
+  <div class="button__container">
+    <button type="button" class="btn btn-primary btn-sm">Add</button>
+    <button type="button" class="btn btn-secondary btn-sm">Export</button>
   </div>
 
   <div class="total__employees-list">
@@ -20,11 +34,23 @@
           <th scope="col">Last Name</th>
           <th scope="col">E-Mail</th>
           <th scope="col">Mobile Number</th>
+          <th scope="col">Status</th>
+          <th scope="col">Hired Date</th>
           <th scope="col">Edits</th>
         </tr>
       </thead>
       <tbody>
-
+        <!-- <tr *ngFor='let us of readData'>
+          <td>{{us.firstname}}</td>
+          <td>{{us.lastname}}</td>
+          <td>{{us.email}}</td>
+          <td>{{us.mobile}}</td>
+          <td>{{us.status}}</td>
+          <td>{{us.hireddate}}</td>
+          <td>
+            <button></button>
+          </td>
+        </tr> -->
       </tbody>
       </table>
   </div>

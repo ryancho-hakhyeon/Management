@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ApiserviceService } from '../apiservice.service'
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:ApiserviceService) { }
+
+  readData: any;
+
 
   ngOnInit(): void {
+    // this.getAllData()
   }
+
+  // Getting All Data from backend
+  // getAllData() {
+  //   this.service.getAllData().subscribe((res) => {
+  //     console.log(res)
+  //   })
+  // }
 
 }
