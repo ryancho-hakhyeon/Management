@@ -14,7 +14,8 @@ import { MatIconModule } from '@angular/material/icon'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodayComponent } from './today/today.component';
 import { WorkComponent } from './work/work.component';
-import { DoneComponent } from './done/done.component'
+import { DoneComponent } from './done/done.component';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DoneComponent } from './done/done.component'
     DashboardComponent,
     TodayComponent,
     WorkComponent,
-    DoneComponent
+    DoneComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

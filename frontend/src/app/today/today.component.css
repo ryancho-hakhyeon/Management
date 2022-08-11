@@ -1,24 +1,16 @@
 
 .search__continer {
   border-radius: 15px;
-  margin: 2rem 1rem;
+  margin: 0 1rem 1rem;
   display: flex;
-}
-
-.search__continer > div > p {
-  margin: 0;
-  width: 5rem;
-  text-align: left;
-  font-weight: 500;
-  padding: auto;
 }
 
 .search__continer > div {
   height: fit-content;
-  width: 90%;
+  width: 95%;
   display: flex;
   gap: 1rem;
-  margin: 1rem;
+  margin: 0.5rem 1rem 0 1rem;
 }
 
 .button__continer {
@@ -33,9 +25,14 @@
   font-size: larger;
 }
 
+.worked__container > div > p {
+  display: inline;
+  margin-right: 4rem;
+}
+
 .container__table {
   margin: 2rem;
-  height: 20%;
+  height: 27%;
   border: 2px inset;
   overflow: scroll;
 }
