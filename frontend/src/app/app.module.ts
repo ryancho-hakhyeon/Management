@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,11 +12,17 @@ import { ApiserviceService } from './apiservice.service';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon'
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodayComponent } from './today/today.component';
 import { WorkComponent } from './work/work.component';
 import { DoneComponent } from './done/done.component';
-import { HomeComponent } from './home/home.component'
+import { DialogComponent } from './dialog/dialog.component'
+
+
 
 @NgModule({
   declarations: [
@@ -26,7 +33,7 @@ import { HomeComponent } from './home/home.component'
     TodayComponent,
     WorkComponent,
     DoneComponent,
-    HomeComponent
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,11 @@ import { HomeComponent } from './home/home.component'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule
   ],
   providers: [ApiserviceService],
   bootstrap: [AppComponent]

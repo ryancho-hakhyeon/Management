@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
           firstname: res.data[0].firstname,
           lastname: res.data[0].lastname,
           email: res.data[0].email,
-          mobilephone: res.data[0].mobilephone
+          mobile: res.data[0].mobile
         });
       });
     }
@@ -40,7 +40,7 @@ export class CreateComponent implements OnInit {
     'firstname': new FormControl('', Validators.required),
     'lastname': new FormControl('', Validators.required),
     'email': new FormControl('', Validators.required),
-    'mobilephone': new FormControl('', Validators.required)
+    'mobile': new FormControl('', Validators.required)
   });
 
   // Create User

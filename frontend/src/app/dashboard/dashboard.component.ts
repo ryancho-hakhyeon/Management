@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 import { ApiserviceService } from '../apiservice.service'
+import { DialogComponent } from '../dialog/dialog.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +12,23 @@ import { ApiserviceService } from '../apiservice.service'
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private service:ApiserviceService) { }
+  constructor(
+    private service:ApiserviceService,
+    private dialog:MatDialog
+    ) { }
 
   readData: any;
 
-
   ngOnInit(): void {
     // this.getAllData()
+  }
+
+  // Open Add page
+  openDialog() {
+    this.dialog.open(DialogComponent, {
+      width: '40%'
+    })
+    console.log('test')
   }
 
   // Getting All Data from backend
