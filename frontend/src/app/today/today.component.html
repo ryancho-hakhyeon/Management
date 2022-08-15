@@ -2,39 +2,21 @@
 
 <div class="search__continer">
   <!-- Search Drop Down by Years, Months, and Days -->
-  <div>
-    <!-- Years button group -->
-    <div class="col-md-4">
-      <select class="form-select" required aria-label="select example">
-        <option value="">Years</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-      </select>
-    </div>
-    <!-- Months button group -->
-    <div class="col-md-4">
-      <select class="form-select" required aria-label="select example">
-        <option value="">Months</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <!-- Days button group -->
-    <div class="col-md-4">
-      <select class="form-select" required aria-label="select example">
-        <option value="">Days</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
+  <form [formGroup]="searchDateForm">
+    <mat-form-field color="accent" appearance="outline">
+      <mat-label>Custom calendar color</mat-label>
+      <input formControlName="dataDate" matInput [matDatepicker]="picker2">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 color="primary"></mat-datepicker>
+    </mat-form-field>
+  </form>
+
+  <div class="button__continer">
+    <button class="btn btn-primary" (click)="getAllData()">Search</button>
   </div>
 </div>
 
-<div class="button__continer">
-  <button class="btn btn-primary">Search</button>
-</div>
 
 <div class="worked__container">
   <div>

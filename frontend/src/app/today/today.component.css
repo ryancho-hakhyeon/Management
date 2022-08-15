@@ -1,20 +1,21 @@
 
 .search__continer {
-  border-radius: 15px;
-  margin: 0 1rem 1rem;
+  margin: 0 2rem 2rem;
   display: flex;
+  gap: 0;
 }
 
-.search__continer > div {
-  height: fit-content;
-  width: 95%;
-  display: flex;
-  gap: 1rem;
-  margin: 0.5rem 1rem 0 1rem;
+.search__continer > form {
+  width: 40%;
+}
+
+mat-form-field {
+  width: 100%;
 }
 
 .button__continer {
-  margin: 0 0 2rem 2rem;
+  margin: 1.5rem 2rem;
+  position: static;
 }
 
 .worked__container {

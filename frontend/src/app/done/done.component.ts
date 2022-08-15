@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-done',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./done.component.css']
 })
 export class DoneComponent implements OnInit {
+
+  dateValue = formatDate(new Date(), 'yyyy-MM-dd', 'en-US')
 
   constructor() { }
 

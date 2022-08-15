@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-work',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkComponent implements OnInit {
 
-  constructor() { }
+  dateValue = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+
+  constructor() {}
 
   ngOnInit(): void {
   }
+
 
 }
