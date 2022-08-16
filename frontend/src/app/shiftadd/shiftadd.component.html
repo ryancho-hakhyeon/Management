@@ -1,0 +1,21 @@
+
+<h2 mat-dialog-title>Add Employees</h2>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="First Name">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last Name">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="searchEmployee()">Search</button>
+</div>

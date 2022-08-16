@@ -25,7 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodayComponent } from './today/today.component';
 import { WorkComponent } from './work/work.component';
 import { DoneComponent } from './done/done.component';
-import { DialogComponent } from './dialog/dialog.component'
+import { DialogComponent } from './dialog/dialog.component';
+import { ShiftaddComponent } from './shiftadd/shiftadd.component'
 
 
 
@@ -38,7 +39,8 @@ import { DialogComponent } from './dialog/dialog.component'
     TodayComponent,
     WorkComponent,
     DoneComponent,
-    DialogComponent
+    DialogComponent,
+    ShiftaddComponent
   ],
   imports: [
     BrowserModule,

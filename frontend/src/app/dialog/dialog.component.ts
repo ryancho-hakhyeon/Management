@@ -23,7 +23,12 @@ export class DialogComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', Validators.required],
       mobile: ['', Validators.required],
+      // address: ['', Validators.required],
+      // status: ['', Validators.required],
       hiredDate: ['', Validators.required],
+      // department: ['', Validators.required],
+      // position: ['', Validators.required],
+      // description: ['', Validators.required],
     })
   }
 
