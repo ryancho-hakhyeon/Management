@@ -21,14 +21,17 @@ export class DialogComponent implements OnInit {
     this.employeesForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      postalcode: ['', Validators.required],
       email: ['', Validators.required],
       mobile: ['', Validators.required],
-      // address: ['', Validators.required],
       // status: ['', Validators.required],
       hiredDate: ['', Validators.required],
-      // department: ['', Validators.required],
-      // position: ['', Validators.required],
-      // description: ['', Validators.required],
+      department: ['', Validators.required],
+      position: ['', Validators.required],
+      description: ['']
     })
   }
 
@@ -44,6 +47,7 @@ export class DialogComponent implements OnInit {
   }
 
   addEmployees() {
+    console.log(this.employeesForm.valid)
     if(this.employeesForm.valid){
       console.log('complete')
       this.employeesForm.reset()

@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: '40%'
     })
-    console.log('test')
+    console.log('dashboard')
   }
 
   // Getting All Data from backend

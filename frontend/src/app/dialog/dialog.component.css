@@ -1,7 +1,11 @@
-mat-form-field {
+.form-full-width, .table-full-width {
   width: 100%;
 }
 
-.example-full-width {
+td {
   width: 100%;
+}
+
+.addr-full-width{
+  width: 10rem;
 }
