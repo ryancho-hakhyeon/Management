@@ -18,24 +18,25 @@ export class DashboardComponent implements OnInit {
     ) { }
 
   readData: any;
+  allEmployees : any;
 
   ngOnInit(): void {
-    // this.getAllData()
+    this.getAllData()
   }
 
   // Open Add page
   openDialog() {
     this.dialog.open(DialogComponent, {
-      width: '40%'
+      width: '45%'
     })
-    console.log('dashboard')
   }
 
   // Getting All Data from backend
-  // getAllData() {
-  //   this.service.getAllData().subscribe((res) => {
-  //     console.log(res)
-  //   })
-  // }
+  getAllData() {
+    this.service.getAllData().subscribe((res) => {
+      this.readData = res.data
+      this.allEmployees = this.readData.length
+    })
+  }
 
 }

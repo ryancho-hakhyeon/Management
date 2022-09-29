@@ -24,7 +24,7 @@ db.connect(err => {
     if (err) {
         console.log(err, 'DB error');
     } else {
-        console.log('Database Connected...Successfully');
+        console.log('Database Connected... Successfully');
     }
 });
 
@@ -40,7 +40,7 @@ app.get('/workers', (req, res) => {
             console.log(err, 'errs');
         }
         if (result.length > 0){
-            console.log(result)
+            console.log('Getting All Data.')
             res.send({
                 message: 'All User Data',
                 data: result
@@ -82,11 +82,20 @@ app.post('/workers', (req, res) => {
 
     let lastName = req.body.lastname;
     let firstName = req.body.firstname;
-    let eMail = req.body.email;
-    let mobileN = req.body.mobile;
+    let address = req.body.address;
+    let city = req.body.city;
+    let state = req.body.state;
+    let zipcode = req.body.zipcode;
+    let email = req.body.email;
+    let phoneNumber = req.body.phoneNumber;
+    let hiredDate = req.body.hiredDate;
+    let department = req.body.department;
+    let position = req.body.postion;
+    let description = req.body.description;
 
-    let qr = `insert into workers(firstname, lastname, email,mobile)
-              value('${firstName}', '${lastName}', '${eMail}', '${mobileN}')`;
+
+    let qr = `insert into workers(firstname, lastname, address, city, state, zipcode, email, phoneNumber, hiredDate, department, position, description)
+              value('${firstName}', '${lastName}', '${address}', '${city}', '${state}', '${zipcode}', '${email}', '${phoneNumber}', '${hiredDate}', '${department}', '${position}', '${description}',)`;
     
     db.query(qr, (err, result) => {
         if (err) {
@@ -95,15 +104,15 @@ app.post('/workers', (req, res) => {
         res.send({
             message: 'Data Inserted'
         })
-        // if (result.length > 0) {
-        //     res.send({
-        //         message: 'Data Inserted'
-        //     });
-        // } else {
-        //     res.send({
-        //         message: 'Data Insert Error...'
-        //     });
-        // }
+        if (result.length > 0) {
+            res.send({
+                message: 'Data Inserted'
+            });
+        } else {
+            res.send({
+                message: 'Data Insert Error...'
+            });
+        }
     });
 });
 
@@ -115,9 +124,17 @@ app.put('/workers/:id', (req, res) => {
 
     let lastName = req.body.lastname;
     let firstName = req.body.firstname;
-    let eMail = req.body.email;
-    let mobileN = req.body.mobile;
-
+    let address = req.body.address;
+    let city = req.body.city;
+    let state = req.body.state;
+    let zipcode = req.body.zipcode;
+    let email = req.body.email;
+    let phoneNumber = req.body.phoneNumber;
+    let hiredDate = req.body.hiredDate;
+    let department = req.body.department;
+    let position = req.body.postion;
+    let description = req.body.description;
+    
     let qr = `update workers set lastname='${lastName}', firstname='${firstName}', email='${eMail}', mobile='${mobileN}'
               where id=${getID}`;
 
@@ -148,8 +165,6 @@ app.delete('/workers/:id', (req, res) => {
     });
 });
 
-
-
 app.listen(process.env.PORT, () => {
-    console.log('Server Running...')
+    console.log('Server Running...' + process.env.PORT)
 });

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-<p>This is a Web Application that is able to see all employees information and work schedule. Also, you can add your work day on the shift table.</p>
+<p>This is a simple and basic web application. It is able to contain and show all employees information including full name, contacts, address, and their position. Also, modification of information is freely allowed, so everyone who use this web application has all permistion to do including add, update, and delete.</p>
 
 ## Development Tools
 

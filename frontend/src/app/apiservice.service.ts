@@ -11,12 +11,12 @@ export class ApiserviceService {
   constructor(private _http:HttpClient) { }
 
   // Connect fronend to backend
-  apiUrl = 'http://localhost:3000/' // backend address
+  apiUrl = 'http://localhost:3000' // backend address
 
   // Get All Data
   getAllData():Observable<any>
   {
-    return this._http.get(`${this.apiUrl}`);
+    return this._http.get(`${this.apiUrl}/workers`);
   }
 
   // Create Data
@@ -24,7 +24,7 @@ export class ApiserviceService {
     // Check
     console.log(data, 'createData')
 
-    return this._http.post(`${this.apiUrl}`, data)
+    return this._http.post(`${this.apiUrl}/workers`, data)
   }
 
   // Delete Data
