@@ -39,4 +39,16 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  deleteData(id: Number) {
+    console.log(id)
+    // this.service.deleteData(id).subscribe((res) => {
+    //   alert('Data Deleted.')
+    //   this.getAllData()
+    // },
+    // (error) => {
+    //   alert('Error: ' + error)
+    //   console.log('error' + error)
+    // })
+  }
+
 }

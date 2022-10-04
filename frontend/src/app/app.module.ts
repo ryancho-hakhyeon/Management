@@ -13,6 +13,7 @@ import { ApiserviceService } from './apiservice.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon'
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -57,7 +58,8 @@ import { ShiftaddComponent } from './shiftadd/shiftadd.component'
     MatNativeDateModule,
     MatSelectModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   providers: [ApiserviceService],
   bootstrap: [AppComponent]

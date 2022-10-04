@@ -18,6 +18,7 @@ export class DialogComponent implements OnInit {
     private matdialogRef: MatDialogRef<DialogComponent>) { }
 
   ngOnInit(): void {
+
     this.employeesForm = this.formBuilder.group({
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
@@ -27,15 +28,13 @@ export class DialogComponent implements OnInit {
       zipcode: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       phoneNumber: [null, Validators.required],
-      // status: [null, Validators.required],
+      status: [null, Validators.required],
       hiredDate: [null, Validators.required],
       department: [null, Validators.required],
       position: [null, Validators.required],
       description: [null]
     })
   }
-
-  // selected = 'option2'
 
   getErrorMessage() {
     if (this.employeesForm.get('email')?.hasError('required')) {

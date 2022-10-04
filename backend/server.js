@@ -61,6 +61,7 @@ app.get('/workers/:id', (req, res) => {
         if (err) {
             console.log(err);
         }
+        
         if (result.length > 0) {
             res.send({
                 message: 'Get Signal Data',
@@ -134,7 +135,7 @@ app.put('/workers/:id', (req, res) => {
     let department = req.body.department;
     let position = req.body.postion;
     let description = req.body.description;
-    
+
     let qr = `update workers set lastname='${lastName}', firstname='${firstName}', email='${eMail}', mobile='${mobileN}'
               where id=${getID}`;
 

@@ -9,3 +9,7 @@ td {
 .addr-full-width{
   width: 10rem;
 }
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
