@@ -28,7 +28,7 @@ import { WorkComponent } from './work/work.component';
 import { DoneComponent } from './done/done.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { ShiftaddComponent } from './shiftadd/shiftadd.component'
-
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -61,7 +61,7 @@ import { ShiftaddComponent } from './shiftadd/shiftadd.component'
     MatCardModule,
     MatRadioModule
   ],
-  providers: [ApiserviceService],
+  providers: [ApiserviceService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

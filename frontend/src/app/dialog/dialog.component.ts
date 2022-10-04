@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog'
 import { ApiserviceService } from '../apiservice.service'
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css']
 })
+
 export class DialogComponent implements OnInit {
 
   employeesForm !: FormGroup
@@ -15,10 +17,11 @@ export class DialogComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private service: ApiserviceService,
-    private matdialogRef: MatDialogRef<DialogComponent>) { }
+    private matdialogRef: MatDialogRef<DialogComponent>,
+    public datepipe: DatePipe
+    ) { }
 
   ngOnInit(): void {
-
     this.employeesForm = this.formBuilder.group({
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
@@ -34,6 +37,8 @@ export class DialogComponent implements OnInit {
       position: [null, Validators.required],
       description: [null]
     })
+
+    this.datepipe.transform(this.employeesForm.value.hiredDate, 'YYYY-MM-dd')
   }
 
   getErrorMessage() {
@@ -45,6 +50,9 @@ export class DialogComponent implements OnInit {
 
   addEmployees() {
     console.log(this.employeesForm.valid)
+
+    this.employeesForm.value.hiredDate = this.datepipe.transform(this.employeesForm.value.hiredDate, 'yyyy-MM-dd')
+
     if(this.employeesForm.valid){
       this.service.createData(this.employeesForm.value)
       .subscribe((res) => {

@@ -61,7 +61,7 @@ app.get('/workers/:id', (req, res) => {
         if (err) {
             console.log(err);
         }
-        
+
         if (result.length > 0) {
             res.send({
                 message: 'Get Signal Data',
@@ -81,33 +81,30 @@ app.post('/workers', (req, res) => {
     // console.log('postdata')
     // console.log(req.body, 'createdata')
 
-    let lastName = req.body.lastname;
-    let firstName = req.body.firstname;
+    let lastName = req.body.lastName;
+    let firstName = req.body.firstName;
     let address = req.body.address;
     let city = req.body.city;
     let state = req.body.state;
     let zipcode = req.body.zipcode;
+    let status = req.body.status;
     let email = req.body.email;
-    let phoneNumber = req.body.phoneNumber;
+    let mobile = req.body.phoneNumber;
     let hiredDate = req.body.hiredDate;
     let department = req.body.department;
-    let position = req.body.postion;
+    let position = req.body.position;
     let description = req.body.description;
 
 
-    let qr = `insert into workers(firstname, lastname, address, city, state, zipcode, email, phoneNumber, hiredDate, department, position, description)
-              value('${firstName}', '${lastName}', '${address}', '${city}', '${state}', '${zipcode}', '${email}', '${phoneNumber}', '${hiredDate}', '${department}', '${position}', '${description}',)`;
+    let qr = `insert into workers(firstname, lastname, address, city, state, zipcode, status, email, mobile, hireDate, department, position, description) value('${firstName}', '${lastName}', '${address}', '${city}', '${state}', '${zipcode}', '${status}', '${email}', '${mobile}', '${hiredDate}', '${department}', '${position}', '${description}')`;
     
     db.query(qr, (err, result) => {
         if (err) {
             console.log(err);
-        }
-        res.send({
-            message: 'Data Inserted'
-        })
-        if (result.length > 0) {
+        } else if (result.length > 0) {
+            console.log('Data Inserted.')
             res.send({
-                message: 'Data Inserted'
+                message: 'Data Inserted.'
             });
         } else {
             res.send({
@@ -136,8 +133,7 @@ app.put('/workers/:id', (req, res) => {
     let position = req.body.postion;
     let description = req.body.description;
 
-    let qr = `update workers set lastname='${lastName}', firstname='${firstName}', email='${eMail}', mobile='${mobileN}'
-              where id=${getID}`;
+    let qr = `update workers set lastname='${lastName}', firstname='${firstName}', email='${eMail}', mobile='${mobileN}' where id=${getID}`;
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -153,16 +149,18 @@ app.put('/workers/:id', (req, res) => {
 app.delete('/workers/:id', (req, res) => {
     let queryID = req.params.id;
 
-    let qr = `delete from workers where id = ${queryID}`
+    let qr = `delete from workers where id=${queryID}`
 
     db.query(qr, (err, result) => {
         if (err) {
             console.log(err);
+        } else {
+            console.log('Data Deleted.')
+            // console.log(result)
+            res.send({
+                message: 'Data Deleted.'
+            });
         }
-
-        res.send({
-            message: 'Data Deleted'
-        });
     });
 });
 

@@ -17,8 +17,8 @@
   </div>
 
   <div class="button__container">
-    <button type="button" class="btn btn-primary btn-sm" (click)="openDialog()">Add</button>
-    <button type="button" class="btn btn-secondary btn-sm">Export</button>
+    <button type="button" class="btn btn-primary" (click)="openDialog()">Add</button>
+    <button type="button" class="btn btn-secondary">Export</button>
   </div>
 
   <div class="total__employees-list">
@@ -26,8 +26,8 @@
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">F Name</th>
-          <th scope="col">L Name</th>
+          <th scope="col">First N</th>
+          <th scope="col">Last N</th>
           <th scope="col">Addr</th>
           <th scope="col">City</th>
           <th scope="col">State</th>
@@ -36,10 +36,10 @@
           <th scope="col">Mobile</th>
           <th scope="col">Status</th>
           <th scope="col">HiredD</th>
-          <th scope="col">Dept</th>
-          <th scope="col">POSN</th>
-          <th scope="col">Desc</th>
-          <th scope="col">Edits</th>
+          <th scope="col">Dept.</th>
+          <th scope="col">Pos.</th>
+          <th scope="col">Read</th>
+          <th scope="col">Edit</th>
         </tr>
       </thead>
       <tbody>
@@ -57,8 +57,11 @@
           <td>{{us.hiredate | date: 'mediumDate'}}</td>
           <td>{{us.department}}</td>
           <td>{{us.position}}</td>
-          <td>{{us.description}}</td>
           <td>
+            <button mat-raised-button color="basic" (click)="readMoreData(us.id, us)">More</button>
+          </td>
+          <td>
+            <button style="margin-right: 10px;" mat-raised-button color="primary" (click)="updateData(us.id, us)" >Edit</button>
             <button mat-raised-button color="warn" (click)="deleteData(us.id)">Del</button>
           </td>
         </tr>
