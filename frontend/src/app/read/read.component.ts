@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiserviceService } from '../apiservice.service'
 
 @Component({
@@ -9,33 +9,12 @@ import { ApiserviceService } from '../apiservice.service'
 })
 export class ReadComponent implements OnInit {
 
-  constructor(private service:ApiserviceService) { }
-
-  readData:any;
-  successmsg:any;
+  constructor(
+    private service:ApiserviceService,
+    @Inject(MAT_DIALOG_DATA) public data: { userId: Number, userData: any }
+  ) { }
 
   ngOnInit(): void {
-    this.getAllData()
+
   }
-
-  // Get Delete ID
-  deleteID(id:any){
-    // Check
-    console.log(id, 'deleteID')
-
-    this.service.deleteData(id).subscribe((res) => {
-      console.log(res, 'delete');
-      this.successmsg = res.message
-      this.getAllData()
-    })
-  }
-
-  // Get All Data
-  getAllData() {
-    this.service.getAllData().subscribe((res) => {
-      console.log(res)
-      this.readData = res.data;
-    })
-  }
-
 }

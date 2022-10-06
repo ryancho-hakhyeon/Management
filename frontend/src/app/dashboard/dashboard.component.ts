@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog'
 
 import { ApiserviceService } from '../apiservice.service'
 import { DialogComponent } from '../dialog/dialog.component';
+import { ReadComponent } from '../read/read.component';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private service:ApiserviceService,
-    private dialog:MatDialog
+    private dialog:MatDialog,
     ) { }
 
   readData: any;
@@ -39,7 +40,7 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  updateData(id: Number, data: []) {
+  updateData(id: Number, data: any) {
     console.log(id)
     console.log(data)
     // this.service.updateData(id, data).subscribe((res) => {
@@ -52,13 +53,21 @@ export class DashboardComponent implements OnInit {
     // )
   }
 
-  readMoreData(id: Number, data:[]) {
-    console.log(id)
-    console.log(data)
+  readMoreData(id: Number, data: any) {
+    // console.log(id)
+    // console.log(data.firstname)
+
+    this.dialog.open(ReadComponent, {
+      data: {
+        userId: id,
+        userData: data
+      },
+      width: '50%'
+    })
   }
 
   deleteData(id: Number) {
-    console.log(id)
+    // console.log(id)
     this.service.deleteData(id).subscribe((res) => {
       alert(res.message)
       // console.log(res)
