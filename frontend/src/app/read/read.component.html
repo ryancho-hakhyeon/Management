@@ -4,9 +4,49 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div> -->
 
+<h1 mat-dialog-title>Employee ID - {{ data.userId }}</h1>
 <div mat-dialog-content>
-  <h3>{{ data.userId }}</h3>
+  <table class="table-full-width">
+    <tr>
+      <th>Full Name: </th>
+      <td>{{ data.userData.firstname }}</td>
+      <td>{{ data.userData.lastname }}</td>
+    </tr>
 
-  <p>Full Name: {{ data.userData.firstname }} {{ data.userData.lastname }}</p>
+    <tr>
+      <th>Address: </th>
+      <td>{{ data.userData.address }}</td>
+      <td>{{ data.userData.city}}, {{ data.userData.state }}</td>
+      <td>{{ data.userData.zipcode }}</td>
+    </tr>
 
+    <tr>
+      <th>E-Mail: </th>
+      <td>{{ data.userData.email }}</td>
+      <td></td>
+      <th>Contact: </th>
+      <td>{{ data.userData.mobile }}</td>
+    </tr>
+
+    <tr>
+      <th>Department: </th>
+      <td>{{ data.userData.department }}</td>
+      <td>({{ data.userData.position }})</td>
+    </tr>
+
+    <tr>
+      <th>Hired Date: </th>
+      <td>{{ data.userData.hiredate | date: 'mediumDate' }}</td>
+    </tr>
+
+    <tr>
+      <th>Description: </th>
+      <!-- <td *ngIf="data.userData.description"></td> -->
+      <td>{{ data.userData.description }}</td>
+    </tr>
+  </table>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
 </div>
