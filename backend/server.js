@@ -55,7 +55,7 @@ app.get('/workers/:id', (req, res) => {
     // console.log(req.params.id, 'getid')
 
     let getID = req.params.id;
-    let qr = `select * from workers where id = ${getID}`
+    let qr = `select * from workers where id=${getID}`
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -101,14 +101,13 @@ app.post('/workers', (req, res) => {
     db.query(qr, (err, result) => {
         if (err) {
             console.log(err);
-        } else if (result.length > 0) {
+            res.send({
+                message: 'Data Insert Error...'
+            });
+        } else {
             console.log('Data Inserted.')
             res.send({
                 message: 'Data Inserted.'
-            });
-        } else {
-            res.send({
-                message: 'Data Insert Error...'
             });
         }
     });
@@ -120,28 +119,31 @@ app.put('/workers/:id', (req, res) => {
 
     let getID = req.params.id;
 
-    let lastName = req.body.lastname;
-    let firstName = req.body.firstname;
+    let lastName = req.body.lastName;
+    let firstName = req.body.firstName;
     let address = req.body.address;
     let city = req.body.city;
     let state = req.body.state;
     let zipcode = req.body.zipcode;
+    let status = req.body.status;
     let email = req.body.email;
     let phoneNumber = req.body.phoneNumber;
     let hiredDate = req.body.hiredDate;
     let department = req.body.department;
-    let position = req.body.postion;
+    let position = req.body.position;
     let description = req.body.description;
 
-    let qr = `update workers set lastname='${lastName}', firstname='${firstName}', email='${eMail}', mobile='${mobileN}' where id=${getID}`;
+    let qr = `update workers set lastname='${lastName}', firstname='${firstName}', address='${address}', city='${city}', state='${state}', zipcode='${zipcode}', status='${status}', email='${email}', mobile='${phoneNumber}', hireDate='${hiredDate}', department='${department}', position='${position}', description='${description}' where id=${getID}`;
 
     db.query(qr, (err, result) => {
         if (err) {
             console.log(err);
+        } else {
+            console.log('Data Updated.')
+            res.send({
+                message: 'Data Updated.'
+            })
         } 
-        res.send({
-            message: 'Data Updated'
-        })
     })
 })
 

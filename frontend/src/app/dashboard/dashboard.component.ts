@@ -19,7 +19,8 @@ export class DashboardComponent implements OnInit {
     ) { }
 
   readData: any;
-  allEmployees : any;
+  allEmployees: any;
+
 
   ngOnInit(): void {
     this.getAllData()
@@ -29,6 +30,8 @@ export class DashboardComponent implements OnInit {
   openDialog() {
     this.dialog.open(DialogComponent, {
       width: '45%'
+    }).afterClosed().subscribe((res) => {
+      this.getAllData()
     })
   }
 
@@ -41,16 +44,18 @@ export class DashboardComponent implements OnInit {
   }
 
   updateData(id: Number, data: any) {
-    console.log(id)
-    console.log(data)
-    // this.service.updateData(id, data).subscribe((res) => {
-    //    alert(res.message)
-    //    this.getAllData()
-    // },
-    // (error) => {
-    //    alert('Error: ' + error)
-    // }
-    // )
+    // console.log(id)
+    // console.log(data)
+
+    this.dialog.open(DialogComponent, {
+      width: '45%',
+      data: {
+        id: id,
+        data: data
+      }
+    }).afterClosed().subscribe((res) => {
+      this.getAllData()
+    })
   }
 
   readMoreData(id: Number, data: any) {
@@ -62,7 +67,7 @@ export class DashboardComponent implements OnInit {
         userId: id,
         userData: data
       },
-      width: '50%'
+      width: '45%'
     })
   }
 
