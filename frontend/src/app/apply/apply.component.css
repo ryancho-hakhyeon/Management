@@ -1,0 +1,40 @@
+
+.container__addbutton {
+  margin: 0 2rem 1rem 2rem;
+  display: block;
+}
+
+.container__title {
+  margin: 2rem;
+  width: 25%;
+}
+
+.table-container {
+  width: 96%;
+  margin: 1rem 1rem 0 1.5rem;
+}
+
+.table-container table {
+  width: 100%;
+}
+
+.table-container th, td {
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.table-container th {
+  width: 10rem;
+}
+
+.form-full-width {
+  width: 100%;
+}
+
+#textarea_details {
+  resize: none;
+}
+
+.container__applyBtn {
+  display: grid;
+  padding: 0 2.5rem;
+}

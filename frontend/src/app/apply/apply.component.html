@@ -1,0 +1,76 @@
+<p></p>
+
+<div class="container__title">
+  <mat-card>{{dateValue}}</mat-card>
+</div>
+
+<div class="container__addbutton">
+  <button class="btn btn-primary" (click)="openSearchEmployee()">+ Add</button>
+</div>
+
+<div class="table-container">
+  <form [formGroup]="appliedForm">
+    <table>
+      <tr>
+        <th>First Name</th>
+        <td>n</td>
+        <th>Last Name</th>
+        <td>l</td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td colspan="3">ddd@dd.cc</td>
+      </tr>
+
+      <tr>
+        <th>Phone</th>
+        <td colspan="3">5555556456</td>
+      </tr>
+
+      <tr>
+        <th colspan="2">Start</th>
+        <th colspan="2">End</th>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Start</mat-label>
+            <input formControlName="startDate" matInput [matDatepicker]="picker3">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </td>
+
+        <td colspan="2">
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>End</mat-label>
+            <input formControlName="endDate" matInput [matDatepicker]="picker4">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+            <mat-datepicker #picker4></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <th colspan="4">Details</th>
+      </tr>
+
+      <tr>
+        <td colspan="4">
+          <mat-form-field class="form-full-width" appearance="outline">
+            <mat-label>Details</mat-label>
+            <textarea formControlName="details" id="textarea_details" matInput placeholder="Vacation.."></textarea>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<div class="container__applyBtn">
+  <button class="btn btn-primary" (click)="applyVacation()">Apply</button>
+</div>

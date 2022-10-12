@@ -24,7 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodayComponent } from './today/today.component';
-import { WorkComponent } from './work/work.component';
+import { ApplyComponent } from './apply/apply.component';
 import { DoneComponent } from './done/done.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { ShiftaddComponent } from './shiftadd/shiftadd.component'
@@ -38,10 +38,10 @@ import { DatePipe } from '@angular/common';
     ReadComponent,
     DashboardComponent,
     TodayComponent,
-    WorkComponent,
     DoneComponent,
     DialogComponent,
-    ShiftaddComponent
+    ShiftaddComponent,
+    ApplyComponent
   ],
   imports: [
     BrowserModule,

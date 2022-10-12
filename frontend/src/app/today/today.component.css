@@ -9,37 +9,11 @@
   width: 40%;
 }
 
-mat-form-field {
-  width: 100%;
-}
-
 .button__continer {
   margin: 1.5rem 2rem;
   position: static;
 }
 
-.worked__container {
-  display: flex;
-  margin: 0 2rem 1rem 5rem;
-  gap: 8em;
-  font-weight: 600;
-  font-size: larger;
+mat-form-field {
+  width: 100%;
 }
-
-.worked__container > div > p {
-  display: inline;
-  margin-right: 4rem;
-}
-
-.container__table {
-  margin: 2rem;
-  height: 27%;
-  border: 2px inset;
-  overflow: scroll;
-}
-
-
-
-
-
-

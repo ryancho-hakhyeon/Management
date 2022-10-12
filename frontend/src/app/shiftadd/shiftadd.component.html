@@ -1,15 +1,22 @@
 
 <h2 mat-dialog-title>Add Employees</h2>
 <div mat-dialog-content>
-  <form>
+  <form [formGroup]="searchForm">
+    <mat-form-field appearance="outline">
+      <mat-label>ID</mat-label>
+      <input formControlName="employeeID" matInput placeholder="EX. 254">
+      <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
-      <input matInput placeholder="First Name">
+      <input formControlName="employeeFirstName" matInput placeholder="First Name">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label>Last Name</mat-label>
-      <input matInput placeholder="Last Name">
+      <input formControlName="employeeLastName" matInput placeholder="Last Name">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
   </form>

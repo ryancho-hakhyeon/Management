@@ -4,7 +4,7 @@
   <!-- Search Drop Down by Years, Months, and Days -->
   <form [formGroup]="searchDateForm">
     <mat-form-field color="accent" appearance="outline">
-      <mat-label>Custom calendar color</mat-label>
+      <mat-label>Calendar</mat-label>
       <input formControlName="dataDate" matInput [matDatepicker]="picker2">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -17,24 +17,5 @@
   </div>
 </div>
 
-
-<div class="worked__container">
-  <div>
-    <p>Worked</p>
-    <p>Data</p>
-  </div>
-  <div>
-    <p>Overtime Worked</p>
-    <p>Data</p>
-  </div>
-</div>
-
-<div class="container__table">
-  <p>Worked Table</p>
-</div>
-
-<div class="container__table">
-  <p>Overtime Worked Table</p>
-</div>
 
 
