@@ -36,8 +36,12 @@ export class ApplyComponent implements OnInit {
   }
 
   openSearchEmployee() {
-    this.dialog.open(ShiftaddComponent, {
+    let dialogRef = this.dialog.open(ShiftaddComponent, {
       width: '40%'
+    })
+
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log(res)
     })
   }
 

@@ -22,18 +22,18 @@ export class CreateComponent implements OnInit {
     // console.log(this.router.snapshot.paramMap.get('id'), 'getID');
     this.getparamid = this.router.snapshot.paramMap.get('id')
 
-    if(this.getparamid) {
-      this.service.getSingleData(this.getparamid).subscribe((res) => {
-        // Check
-        console.log(res, 'check res id');
-        this.userForm.patchValue({
-          firstname: res.data[0].firstname,
-          lastname: res.data[0].lastname,
-          email: res.data[0].email,
-          mobile: res.data[0].mobile
-        });
-      });
-    }
+    // if(this.getparamid) {
+    //   this.service.getSingleData(this.getparamid).subscribe((res) => {
+    //     // Check
+    //     console.log(res, 'check res id');
+    //     this.userForm.patchValue({
+    //       firstname: res.data[0].firstname,
+    //       lastname: res.data[0].lastname,
+    //       email: res.data[0].email,
+    //       mobile: res.data[0].mobile
+    //     });
+    //   });
+    // }
   }
 
   userForm = new FormGroup({

@@ -50,27 +50,25 @@ app.get('/workers', (req, res) => {
 });
 
 // Get Signal Data
-app.get('/workers/:id', (req, res) => {
+app.get('/workers/:id/:firstname/:lastname', (req, res) => {
     // console.log('get signal data')
-    // console.log(req.params.id, 'getid')
+    // console.log(req.params)
 
     let getID = req.params.id;
-    let qr = `select * from workers where id=${getID}`
+    let getFirstName = req.params.firstname;
+    let getLastName = req.params.lastname;
+
+    let qr = `select * from workers where id=${getID} and firstname='${getFirstName}' and lastname='${getLastName}'`
 
     db.query(qr, (err, result) => {
         if (err) {
-            console.log(err);
+            console.log(err, 'errs');
         }
-
-        if (result.length > 0) {
+        if (result.length > 0){
+            console.log('Getting Single Data.')
             res.send({
-                message: 'Get Signal Data',
+                message: 'Single User\'s Data',
                 data: result
-            });
-            console.log(result)
-        } else {
-            res.send({
-                message: 'Data Not Found'
             });
         }
     });

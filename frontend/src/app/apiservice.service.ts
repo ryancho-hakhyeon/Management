@@ -40,8 +40,11 @@ export class ApiserviceService {
   }
 
   // Get Single Data
-  getSingleData(id:any):Observable<any> {
-    let ids = id
-    return this._http.get(`${this.apiUrl}/workers/${ids}`)
+  getSingleData(data:any):Observable<any> {
+    let ids = data.employeeID
+    let lastnames = data.employeeLastName
+    let firstnames = data.employeeFirstName
+
+    return this._http.get(`${this.apiUrl}/workers/${ids}/${firstnames}/${lastnames}`)
   }
 }
