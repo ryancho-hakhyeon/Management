@@ -164,6 +164,33 @@ app.delete('/workers/:id', (req, res) => {
     });
 });
 
+app.post('applies', (req, res) => {
+    let employee_id = req.body.employeeId 
+    let lastName = req.body.lastName;
+    let firstName = req.body.firstName;
+    let email = req.body.email;
+    let mobile = req.body.phone;
+    let startDate = req.body.startDate;
+    let endDate = req.body.endDate;
+    let details = req.body.details;
+
+    let qr = `insert into applies(em_id, firstname, lastname, email, mobile, startDate, endDate, details) value('${employee_id}', '${firstName}', '${lastName}', '${email}', '${mobile}', '${startDate}', '${endDate}', '${details}')`;
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.send({
+                message: 'Apply Data Insert Error...'
+            });
+        } else {
+            console.log('Apply Data Inserted.')
+            res.send({
+                message: 'Apply Data Inserted.'
+            });
+        }
+    });
+})
+
 app.listen(process.env.PORT, () => {
     console.log('Server Running...' + process.env.PORT)
 });

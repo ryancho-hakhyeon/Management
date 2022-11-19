@@ -47,4 +47,13 @@ export class ApiserviceService {
 
     return this._http.get(`${this.apiUrl}/workers/${ids}/${firstnames}/${lastnames}`)
   }
+
+  // Input vacation application in the apply talbe
+  createApply(data:any):Observable<any> {
+    console.log(data, 'create application.')
+
+    return this._http.post(`${this.apiUrl}/applies`, data)
+  }
 }
+
+

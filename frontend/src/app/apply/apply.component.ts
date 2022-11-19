@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog'
+import { FormBuilder, FormGroup, NgControlStatusGroup, Validators } from '@angular/forms';
 
 import { ApiserviceService } from '../apiservice.service'
 import { ShiftaddComponent } from '../shiftadd/shiftadd.component';
@@ -15,20 +15,27 @@ export class ApplyComponent implements OnInit {
 
   dateValue = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
   appliedForm !: FormGroup;
+  receivedData = {
+    id: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNum: ''
+  }
 
   constructor(
     private appliedFormbuilder: FormBuilder,
     private service:ApiserviceService,
-    private dialog:MatDialog
+    private dialog:MatDialog,
   ) {}
 
   ngOnInit(): void {
     this.appliedForm = this.appliedFormbuilder.group({
-      // employeeId: [null],
-      // firstName: [null],
-      // lastName: [null],
-      // email: [null],
-      // phone: [null],
+      employeeId: [null],
+      firstName: [null],
+      lastName: [null],
+      email: [null],
+      phone: [null],
       startDate: [null, Validators.required],
       endDate: [null, Validators.required],
       details: [null]
@@ -36,18 +43,46 @@ export class ApplyComponent implements OnInit {
   }
 
   openSearchEmployee() {
-    let dialogRef = this.dialog.open(ShiftaddComponent, {
-      width: '40%'
+    const dialogRef =  this.dialog.open(ShiftaddComponent, {
+      width: '40%',
+      data: {data: []}
     })
-
-    dialogRef.afterClosed().subscribe((res) => {
-      console.log(res)
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('test')
+      this.receivedData = {
+        id: result.id,
+        firstName: result.firstname,
+        lastName: result.lastname,
+        email: result.email,
+        phoneNum: result.mobile
+      }
+      // console.log(this.tmp)
     })
   }
 
   applyVacation() {
-    console.log('test')
-    console.log(this.appliedForm.valid)
-    console.log(this.appliedForm.value)
+    // console.log('test')
+    if (this.receivedData.id) {
+      this.appliedForm.value.employeeId = this.receivedData.id
+      this.appliedForm.value.firstName = this.receivedData.firstName
+      this.appliedForm.value.lastName = this.receivedData.lastName
+      this.appliedForm.value.email = this.receivedData.email
+      this.appliedForm.value.phone = this.receivedData.phoneNum
+    }
+
+    if (this.appliedForm.valid) {
+      this.service.createApply(this.appliedForm.value)
+      .subscribe((res) => {
+        alert(res.message)
+      }, (err) => {
+        alert(err.message)
+      });
+
+      this.appliedForm.reset()
+    } else {
+      alert('Information is not valid.')
+    }
+    // console.log(this.appliedForm.valid)
+    // console.log(this.appliedForm.value)
   }
 }

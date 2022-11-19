@@ -1,44 +1,7 @@
 
 .container__text {
-  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70%;
+  font-size: 50px;
 }
 
-.container__text p {
-  position: absolute;
-  font-size: 10rem;
-  font-weight: 600;
-}
-
-.container__small-text {
-  margin-top: -10rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container__small-text h2 {
-  position: absolute;
-  font-size: 2rem;
-  font-weight: 500;
-}
-
-.container__small-text h2::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: white;
-  border-left: 3px solid black;
-  animation: typing 2.5s steps(23) infinite;
-}
-
-@keyframes typing {
-  100% {
-    left: 100%;
-    margin: 0 0 0 2rem;
-  }
-}

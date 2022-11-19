@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
-import { formatDate } from '@angular/common';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+// import { formatDate } from '@angular/common';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ApiserviceService } from '../apiservice.service'
-
 
 @Component({
   selector: 'app-shiftadd',
   templateUrl: './shiftadd.component.html',
   styleUrls: ['./shiftadd.component.css']
 })
+
 export class ShiftaddComponent implements OnInit {
 
   searchedEmployee : any
@@ -20,7 +20,8 @@ export class ShiftaddComponent implements OnInit {
   constructor(
     private searchFormBuilder: FormBuilder,
     private service:ApiserviceService,
-    private matdialogRef: MatDialogRef<ShiftaddComponent>
+    private matdialogRef: MatDialogRef<ShiftaddComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +41,9 @@ export class ShiftaddComponent implements OnInit {
       this.service.getSingleData(this.searchForm.value)
         .subscribe((res) => {
           alert(res.message)
-          this.searchEmployee = res.data[0]
+          this.searchedEmployee = res.data[0]
+          // console.log(this.searchedEmployee)
+          this.matdialogRef.close(this.searchedEmployee)
         }, (err) => {
           alert(err.message)
         })
