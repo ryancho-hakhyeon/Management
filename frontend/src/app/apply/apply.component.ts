@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { formatDate } from '@angular/common';
+import { formatDate, DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog'
 import { FormBuilder, FormGroup, NgControlStatusGroup, Validators } from '@angular/forms';
 
@@ -27,6 +27,7 @@ export class ApplyComponent implements OnInit {
     private appliedFormbuilder: FormBuilder,
     private service:ApiserviceService,
     private dialog:MatDialog,
+    public datepipe:DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +69,10 @@ export class ApplyComponent implements OnInit {
       this.appliedForm.value.lastName = this.receivedData.lastName
       this.appliedForm.value.email = this.receivedData.email
       this.appliedForm.value.phone = this.receivedData.phoneNum
+
+      // Modify Date Format
+      this.appliedForm.value.startDate = this.datepipe.transform(this.appliedForm.value.startDate, 'yyyy-MM-dd')
+      this.appliedForm.value.endDate = this.datepipe.transform(this.appliedForm.value.endDate, 'yyyy-MM-dd')
     }
 
     if (this.appliedForm.valid) {

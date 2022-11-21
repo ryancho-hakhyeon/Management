@@ -191,6 +191,23 @@ app.post('applies', (req, res) => {
     });
 })
 
+app.get('applies', (res, req) => {
+    let qr = `select * from applies`
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err, 'errs');
+        }
+        if (result.length > 0){
+            console.log('Getting All Data From Applies Table.')
+            res.send({
+                message: 'All Applied Data',
+                data: result
+            });
+        }
+    })
+})
+
 app.listen(process.env.PORT, () => {
     console.log('Server Running...' + process.env.PORT)
 });

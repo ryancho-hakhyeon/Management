@@ -54,6 +54,11 @@ export class ApiserviceService {
 
     return this._http.post(`${this.apiUrl}/applies`, data)
   }
+
+  getAllAppliedData():Observable<any>
+  {
+    return this._http.get(`${this.apiUrl}/applies`)
+  }
 }
 
 
