@@ -20,7 +20,9 @@ export class ApplyComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    phoneNum: ''
+    phoneNum: '',
+    position: '',
+    department: ''
   }
 
   constructor(
@@ -37,6 +39,8 @@ export class ApplyComponent implements OnInit {
       lastName: [null],
       email: [null],
       phone: [null],
+      position: [null],
+      department: [null],
       startDate: [null, Validators.required],
       endDate: [null, Validators.required],
       details: [null]
@@ -55,7 +59,9 @@ export class ApplyComponent implements OnInit {
         firstName: result.firstname,
         lastName: result.lastname,
         email: result.email,
-        phoneNum: result.mobile
+        phoneNum: result.mobile,
+        position: result.position,
+        department: result.department
       }
       // console.log(this.tmp)
     })
@@ -69,6 +75,9 @@ export class ApplyComponent implements OnInit {
       this.appliedForm.value.lastName = this.receivedData.lastName
       this.appliedForm.value.email = this.receivedData.email
       this.appliedForm.value.phone = this.receivedData.phoneNum
+
+      this.appliedForm.value.position = this.receivedData.position
+      this.appliedForm.value.department = this.receivedData.department
 
       // Modify Date Format
       this.appliedForm.value.startDate = this.datepipe.transform(this.appliedForm.value.startDate, 'yyyy-MM-dd')

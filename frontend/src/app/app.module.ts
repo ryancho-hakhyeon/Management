@@ -29,6 +29,7 @@ import { DoneComponent } from './done/done.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { ShiftaddComponent } from './shiftadd/shiftadd.component'
 import { DatePipe } from '@angular/common';
+import { AppliedformComponent } from './appliedform/appliedform.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { DatePipe } from '@angular/common';
     DoneComponent,
     DialogComponent,
     ShiftaddComponent,
-    ApplyComponent
+    ApplyComponent,
+    AppliedformComponent
   ],
   imports: [
     BrowserModule,

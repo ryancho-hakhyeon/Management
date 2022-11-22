@@ -9,17 +9,26 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">ID</th>
+        <th scope="col">Employee ID</th>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">E-Mail</th>
         <th scope="col">Department</th>
+        <th scope="col">Position</th>
         <th scope="col">Details</th>
       </tr>
     </thead>
     <tbody>
-      <tr >
-
+      <tr *ngFor="let appliedData of readAppliedData">
+        <td>{{appliedData.em_id}}</td>
+        <td>{{appliedData.firstName}}</td>
+        <td>{{appliedData.lastName}}</td>
+        <td>{{appliedData.email}}</td>
+        <td>{{appliedData.department}}</td>
+        <td>{{appliedData.position}}</td>
+        <td>
+          <button mat-raised-button color="basic" (click)="readAppliedDetailsData(appliedData)">Details</button>
+        </td>
       </tr>
     </tbody>
   </table>

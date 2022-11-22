@@ -170,11 +170,13 @@ app.post('applies', (req, res) => {
     let firstName = req.body.firstName;
     let email = req.body.email;
     let mobile = req.body.phone;
+    let position = req.body.position;
+    let department = req.body.department;
     let startDate = req.body.startDate;
     let endDate = req.body.endDate;
     let details = req.body.details;
 
-    let qr = `insert into applies(em_id, firstname, lastname, email, mobile, startDate, endDate, details) value('${employee_id}', '${firstName}', '${lastName}', '${email}', '${mobile}', '${startDate}', '${endDate}', '${details}')`;
+    let qr = `insert into applies(em_id, firstname, lastname, email, mobile, position, department, startDate, endDate, details) value('${employee_id}', '${firstName}', '${lastName}', '${email}', '${mobile}','${position}', '${department}', '${startDate}', '${endDate}', '${details}')`;
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -198,7 +200,7 @@ app.get('applies', (res, req) => {
         if (err) {
             console.log(err, 'errs');
         }
-        if (result.length > 0){
+        if (result.length >= 0){
             console.log('Getting All Data From Applies Table.')
             res.send({
                 message: 'All Applied Data',

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog'
 
 import { ApiserviceService } from '../apiservice.service'
+import { AppliedformComponent } from '../appliedform/appliedform.component';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class DoneComponent implements OnInit {
   dateValue = formatDate(new Date(), 'yyyy-MM-dd', 'en-US')
 
   constructor(
-    private api_service: ApiserviceService
+    private api_service: ApiserviceService,
+    private dialog:MatDialog,
   ) { }
 
   readAppliedData: any;
@@ -29,4 +32,21 @@ export class DoneComponent implements OnInit {
     })
   }
 
+  readAppliedDetailsData(data:any){
+    console.log(data)
+    this.dialog.open(AppliedformComponent, {
+      width: '45%',
+      data: data
+    }).afterClosed().subscribe((res) => {
+
+    })
+  }
+
+  approvedAppliedData(id:any){
+
+  }
+
+  deniedAppliedData(id:any){
+
+  }
 }
