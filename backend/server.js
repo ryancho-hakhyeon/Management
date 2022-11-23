@@ -37,7 +37,7 @@ app.get('/workers', (req, res) => {
     
     db.query(qr, (err, result) => {
         if (err) {
-            console.log(err, 'errs');
+            console.log(err, 'Errors.');
         }
         if (result.length > 0){
             console.log('Getting All Data.')
@@ -62,7 +62,7 @@ app.get('/workers/:id/:firstname/:lastname', (req, res) => {
 
     db.query(qr, (err, result) => {
         if (err) {
-            console.log(err, 'errs');
+            console.log(err, 'Errors.');
         }
         if (result.length > 0){
             console.log('Getting Single Data.')
@@ -164,7 +164,7 @@ app.delete('/workers/:id', (req, res) => {
     });
 });
 
-app.post('applies', (req, res) => {
+app.post('/applies', (req, res) => {
     let employee_id = req.body.employeeId 
     let lastName = req.body.lastName;
     let firstName = req.body.firstName;
@@ -176,7 +176,7 @@ app.post('applies', (req, res) => {
     let endDate = req.body.endDate;
     let details = req.body.details;
 
-    let qr = `insert into applies(em_id, firstname, lastname, email, mobile, position, department, startDate, endDate, details) value('${employee_id}', '${firstName}', '${lastName}', '${email}', '${mobile}','${position}', '${department}', '${startDate}', '${endDate}', '${details}')`;
+    let qr = `insert into applies(firstname, lastname, em_id,  email, mobile, position, department, startDate, endDate, details) value('${firstName}', '${lastName}', '${employee_id}',  '${email}', '${mobile}','${position}', '${department}', '${startDate}', '${endDate}', '${details}')`;
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -193,17 +193,17 @@ app.post('applies', (req, res) => {
     });
 })
 
-app.get('applies', (res, req) => {
+app.get('/applies', (req, res) => {
     let qr = `select * from applies`
 
     db.query(qr, (err, result) => {
         if (err) {
             console.log(err, 'errs');
-        }
-        if (result.length >= 0){
+        } 
+        if (result.length >= 0) {
             console.log('Getting All Data From Applies Table.')
             res.send({
-                message: 'All Applied Data',
+                message: 'All Applied Data.',
                 data: result
             });
         }

@@ -33,16 +33,19 @@ export class DoneComponent implements OnInit {
   }
 
   readAppliedDetailsData(data:any){
-    console.log(data)
+    // console.log(data)
     this.dialog.open(AppliedformComponent, {
       width: '45%',
-      data: data
+      data: {
+        userId: data.em_id,
+        userData: data
+      }
     }).afterClosed().subscribe((res) => {
 
     })
   }
 
-  approvedAppliedData(id:any){
+  acceptedAppliedData(id:any){
 
   }
 

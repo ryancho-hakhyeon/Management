@@ -50,8 +50,7 @@ export class ApiserviceService {
 
   // Input vacation application in the apply talbe
   createApply(data:any):Observable<any> {
-    console.log(data, 'create application.')
-
+    // console.log(data, 'create application.')
     return this._http.post(`${this.apiUrl}/applies`, data)
   }
 

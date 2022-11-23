@@ -1,5 +1,57 @@
-<p></p>
 
-<div>
+<h2 mat-dialog-title>Form for {{ data.userData.firstname +' '+ data.userData.lastname }} - {{ data.userData.em_id }}</h2>
 
+<div mat-dialog-content class="checked-container">
+  <table class="table-full-width" cellspacing="0">
+    <tr>
+      <th scope="col">Department</th>
+      <td>{{ data.userData.position }} - {{ data.userData.department }}</td>
+    </tr>
+
+    <tr>
+      <th scope="col" colspan="3">Employee's Information</th>
+    </tr>
+
+    <tr>
+      <th scope="col">Phone</th>
+      <td>{{ data.userData.mobile }}</td>
+
+      <th scope="col">E-Mail</th>
+      <td>{{ data.userData.email }}</td>
+    </tr>
+
+    <tr>
+      <th scope="col">Start Date</th>
+      <td>{{ data.userData.startDate }}</td>
+    </tr>
+
+    <tr>
+      <th scope="col">End Date</th>
+      <td>{{ data.userData.endDate }}</td>
+    </tr>
+  </table>
+
+  <mat-card>
+    <mat-card-content>{{ data.userData.details }}</mat-card-content>
+  </mat-card>
+
+  <mat-divider style="margin-top: 10px;"></mat-divider>
+
+  <mat-radio-group aria-label="checked" [(ngModel)]="checkedStatus" class="checked-radio-group">
+    <mat-card-title>Status</mat-card-title>
+    <mat-radio-button class="checked-radio-button" value="accept">Accept</mat-radio-button>
+    <mat-radio-button class="checked-radio-button" value="deny">Deny</mat-radio-button>
+  </mat-radio-group>
+
+  <form *ngIf="checkedStatus === 'deny'" class="checked-form" [formGroup]="applicationStatusForm">
+    <mat-form-field class="checked-full-width">
+      <mat-label>Reference</mat-label>
+      <textarea formControlName="applicationStatus" matInput placeholder="Ex. It is because..." appearance="outline"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" style="margin-left: 8px;" (click)="checkedApplication()">Ok</button>
 </div>

@@ -85,6 +85,7 @@ export class ApplyComponent implements OnInit {
     }
 
     if (this.appliedForm.valid) {
+      // console.log(this.appliedForm.value)
       this.service.createApply(this.appliedForm.value)
       .subscribe((res) => {
         alert(res.message)

@@ -21,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodayComponent } from './today/today.component';
@@ -61,7 +62,8 @@ import { AppliedformComponent } from './appliedform/appliedform.component';
     MatSelectModule,
     MatButtonModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDividerModule
   ],
   providers: [ApiserviceService, DatePipe],
   bootstrap: [AppComponent]
