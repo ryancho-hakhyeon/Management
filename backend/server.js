@@ -210,6 +210,58 @@ app.get('/applies', (req, res) => {
     })
 })
 
+app.delete('/applies', (req, res) => {
+    let queryID = req.params.id;
+
+    let qr = `delete from applies where id=${queryID}`
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Data Deleted.')
+            // console.log(result)
+            res.send({
+                message: 'Data Deleted.'
+            });
+        }
+    });
+})
+
+app.post('/accepted-applications', (req, res) => {
+    // post data
+
+    let qr = `insert into accpected-applications() values()`
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('Accepted Application Inserted.')
+            res.send({
+                message: 'Application Accepted.'
+            })
+        }
+    })
+})
+
+app.post('/rejected-applications', (req, res) => {
+    // post data
+
+    let qr = `insert into rejected-applications() values()`
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('Rejected Application Inserted.')
+            res.send({
+                message: 'Application Rejected.'
+            })
+        }
+    })
+})
+
 app.listen(process.env.PORT, () => {
     console.log('Server Running...' + process.env.PORT)
 });

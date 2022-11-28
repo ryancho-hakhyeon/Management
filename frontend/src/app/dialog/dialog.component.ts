@@ -57,7 +57,7 @@ export class DialogComponent implements OnInit {
         description: [null]
       })
     }
-    console.log(this.singleData.data)
+    // console.log(this.singleData.data)
     // this.datepipe.transform(this.employeesForm.value.hiredDate, 'YYYY-MM-dd')
   }
 

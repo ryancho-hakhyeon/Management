@@ -46,7 +46,7 @@
   <form *ngIf="checkedStatus === 'deny'" class="checked-form" [formGroup]="applicationStatusForm">
     <mat-form-field class="checked-full-width">
       <mat-label>Reference</mat-label>
-      <textarea formControlName="applicationStatus" matInput placeholder="Ex. It is because..." appearance="outline"></textarea>
+      <textarea formControlName="rejectedDetails" matInput placeholder="Ex. It is because..." appearance="outline"></textarea>
     </mat-form-field>
   </form>
 </div>

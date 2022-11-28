@@ -41,7 +41,11 @@ export class DoneComponent implements OnInit {
         userData: data
       }
     }).afterClosed().subscribe((res) => {
-
+      // this.api_service.deleteApply(data.em_id).subscribe((res) => {
+      //   alert(res.message)
+      // }, (err) => {
+      //   alert('Error: ' + err)
+      // })
     })
   }
 

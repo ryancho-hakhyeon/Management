@@ -58,6 +58,22 @@ export class ApiserviceService {
   {
     return this._http.get(`${this.apiUrl}/applies`)
   }
+
+  deleteApply(id: any):Observable<any>
+  {
+    let ids = id
+    return this._http.delete(`${this.apiUrl}/applies/${ids}`)
+  }
+
+  createAcceptedData(data: any):Observable<any>
+  {
+    return this._http.post(`${this.apiUrl}/accepted-applications`, data)
+  }
+
+  createRejectedData(data: any):Observable<any>
+  {
+    return this._http.post(`${this.apiUrl}/rejected-applications`, data)
+  }
 }
 
 

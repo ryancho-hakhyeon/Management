@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ApiserviceService } from '../apiservice.service'
 import { DatePipe } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-appliedform',
@@ -15,6 +17,8 @@ export class AppliedformComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { userData: any },
+    private matDialogRef: MatDialogRef<AppliedformComponent>,
+    private service: ApiserviceService,
     public datepipe: DatePipe,
     private formBuilder: FormBuilder,
   ) { }
@@ -25,14 +29,27 @@ export class AppliedformComponent implements OnInit {
     this.data.userData.endDate = this.datepipe.transform(this.data.userData.endDate, 'yyyy-MM-dd')
 
     this.applicationStatusForm = this.formBuilder.group({
-      applicationStatus: [null],
-
+      rejectedDetails: [null]
     })
   }
 
-  checkedApplication(){
+  checkedApplication() {
     // console.log('test')
+    this.applicationStatusForm.value.applicationStatus = this.checkedStatus
+    Object.assign(this.applicationStatusForm.value, this.data.userData)
 
-    console.log(this.applicationStatusForm.value)
+    if (this.checkedStatus === 'accept') {
+      console.log('accepted')
+      this.service.createAcceptedData(this.applicationStatusForm.value).subscribe((res) => {
+        alert(res.message)
+      }, (err) => {
+        alert('Error: ' + err.message)
+      })
+    } else {
+      console.log('rejected')
+    }
+
+    this.applicationStatusForm.reset()
+    this.matDialogRef.close()
   }
 }
