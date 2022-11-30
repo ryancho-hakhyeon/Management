@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { ApiserviceService } from '../apiservice.service';
 
 @Component({
   selector: 'app-today',
@@ -9,10 +11,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TodayComponent implements OnInit {
 
-  searchDateForm !: FormGroup
+  searchDateForm !: FormGroup;
+  readAllAcceptedData : any;
+  readFilteredData: any;
 
   constructor(
-    private searchformbuilder: FormBuilder
+    private service: ApiserviceService,
+    private searchformbuilder: FormBuilder,
+    public datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
@@ -22,8 +28,18 @@ export class TodayComponent implements OnInit {
   }
 
   getAllData(){
-
+    this.searchDateForm.value.dataDate = this.datePipe.transform(this.searchDateForm.value.dataDate, 'yyyy-MM-dd')
     console.log(this.searchDateForm.value)
+
+    if (this.searchDateForm.valid) {
+      this.service.getAccepetedData().subscribe((res) => {
+        console.log(res)
+        console.log(res.data)
+        this.readAllAcceptedData = res.data
+      })
+    }
+
+    // this.readFilteredData = Object.
   }
 
 }

@@ -3,7 +3,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiserviceService } from '../apiservice.service'
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-appliedform',
@@ -35,21 +34,27 @@ export class AppliedformComponent implements OnInit {
 
   checkedApplication() {
     // console.log('test')
-    this.applicationStatusForm.value.applicationStatus = this.checkedStatus
+    // this.applicationStatusForm.value.applicationStatus = this.checkedStatus
     Object.assign(this.applicationStatusForm.value, this.data.userData)
 
     if (this.checkedStatus === 'accept') {
       console.log('accepted')
-      this.service.createAcceptedData(this.applicationStatusForm.value).subscribe((res) => {
-        alert(res.message)
-      }, (err) => {
-        alert('Error: ' + err.message)
-      })
+      // console.log(this.applicationStatusForm.value)
+      // this.service.createAcceptedData(this.applicationStatusForm.value).subscribe((res) => {
+      //   alert(res.message)
+      // }, (err) => {
+      //   alert('Error: ' + err.message)
+      // })
     } else {
       console.log('rejected')
+      // this.service.createRejectedData(this.applicationStatusForm.value).subscribe((res) => {
+      //   alert(res.message)
+      // }, (err) => {
+      //   alert('Error: '+ err.message)
+      // })
     }
 
     this.applicationStatusForm.reset()
-    this.matDialogRef.close()
+    this.matDialogRef.close(this.checkedStatus)
   }
 }

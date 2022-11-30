@@ -17,3 +17,9 @@
 mat-form-field {
   width: 100%;
 }
+
+.container__accpeted {
+  padding: 2rem 1rem 0 1rem;
+  margin: 2.5rem;
+  width: auto;
+}

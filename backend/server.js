@@ -230,8 +230,16 @@ app.delete('/applies', (req, res) => {
 
 app.post('/accepted-applications', (req, res) => {
     // post data
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let employee_id = req.body.em_id;
+    let position = req.body.position;
+    let department = req.body.department;
+    let startDate = req.body.startDate;
+    let endDate = req.body.endDate;
+    let details = req.body.details;
 
-    let qr = `insert into accpected-applications() values()`
+    let qr = `insert into accpected_applications(firstname, lastname, em_id, position, department, startDate, endDate, details) values('${firstname}', '${lastname}', '${employee_id}', '${position}', '${department}', '${startDate}', '${endDate}', '${details}')`
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -247,8 +255,17 @@ app.post('/accepted-applications', (req, res) => {
 
 app.post('/rejected-applications', (req, res) => {
     // post data
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let employee_id = req.body.em_id;
+    let position = req.body.position;
+    let department = req.body.department;
+    let startDate = req.body.startDate;
+    let endDate = req.body.endDate;
+    let details = req.body.details;
+    let rejectedDetails = req.body.rejectedDetails;
 
-    let qr = `insert into rejected-applications() values()`
+    let qr = `insert into rejected_applications(firstname, lastname, em_id, position, department, startDate, endDate, details, rejectedDetails) values('${firstname}', '${lastname}', '${employee_id}', '${position}', '${department}', '${startDate}', '${endDate}', '${details}', ${rejectedDetails}`
 
     db.query(qr, (err, result) => {
         if (err) {
@@ -257,6 +274,21 @@ app.post('/rejected-applications', (req, res) => {
             console.log('Rejected Application Inserted.')
             res.send({
                 message: 'Application Rejected.'
+            })
+        }
+    })
+})
+
+app.get('/accepted-applications', (req, res) => {
+    let qr = `select * from accepted_applications`
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('Get All Accepted Applications.')
+            res.send({
+                message: 'Get All Accepted Applications.'
             })
         }
     })

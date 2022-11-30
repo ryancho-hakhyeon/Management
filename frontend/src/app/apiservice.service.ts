@@ -74,6 +74,16 @@ export class ApiserviceService {
   {
     return this._http.post(`${this.apiUrl}/rejected-applications`, data)
   }
+
+  getAccepetedData():Observable<any>
+  {
+    return this._http.get(`${this.apiUrl}/accepted-applications`)
+  }
+
+  getRejectedData():Observable<any>
+  {
+    return this._http.get(`${this.apiUrl}/rejected-applications`)
+  }
 }
 
 

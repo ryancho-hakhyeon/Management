@@ -34,26 +34,24 @@ export class DoneComponent implements OnInit {
 
   readAppliedDetailsData(data:any){
     // console.log(data)
-    this.dialog.open(AppliedformComponent, {
+    const dialogRef = this.dialog.open(AppliedformComponent, {
       width: '45%',
       data: {
         userId: data.em_id,
         userData: data
       }
-    }).afterClosed().subscribe((res) => {
-      // this.api_service.deleteApply(data.em_id).subscribe((res) => {
-      //   alert(res.message)
-      // }, (err) => {
-      //   alert('Error: ' + err)
-      // })
     })
-  }
 
-  acceptedAppliedData(id:any){
-
-  }
-
-  deniedAppliedData(id:any){
-
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // this.api_service.deleteApply(data.em_id).subscribe((res) => {
+        //   alert(res.message)
+        // }, (err) => {
+        //   alert('Error: ' + err)
+        // })
+      } else {
+        console.log('Closed.')
+      }
+    })
   }
 }
