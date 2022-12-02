@@ -1,44 +1,84 @@
 <p></p>
 
-<div class="search__continer">
-  <!-- Search Drop Down by Years, Months, and Days -->
-  <form [formGroup]="searchDateForm">
-    <mat-form-field color="accent" appearance="outline">
-      <mat-label>Calendar</mat-label>
-      <input formControlName="dataDate" matInput [matDatepicker]="picker2">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2 color="primary"></mat-datepicker>
-    </mat-form-field>
-  </form>
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">assignment_turned_in</mat-icon>
+      Search Accepted Application
+    </ng-template>
+    <div class="search__continer">
+      <!-- Search Drop Down by Years, Months, and Days -->
+      <form [formGroup]="searchDateForm">
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>Calendar</mat-label>
+          <input formControlName="dataDate" matInput [matDatepicker]="picker2">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2 color="primary"></mat-datepicker>
+        </mat-form-field>
+      </form>
 
-  <div class="button__continer">
-    <button class="btn btn-primary" (click)="getAllData()">Search</button>
-  </div>
-</div>
+      <div class="button__continer">
+        <button class="btn btn-primary" (click)="getAllData()">Search</button>
+      </div>
+    </div>
 
-<div class="container__accpeted">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Employee ID</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Position</th>
-        <th scope="col">Department</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">End Date</th>
-        <th scope="col">Details</th>
-      </tr>
-    </thead>
+    <div class="container__table">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Department</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <tr>
+        <tbody>
+          <tr>
 
-      </tr>
-    </tbody>
-  </table>
-</div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">content_paste_off</mat-icon>
+      Rejected Application
+    </ng-template>
+    <div class="container__table">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Department</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Details</th>
+            <th scope="col">Re-apply</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+
 
 
 

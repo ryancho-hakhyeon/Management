@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs'
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodayComponent } from './today/today.component';
@@ -31,6 +32,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { ShiftaddComponent } from './shiftadd/shiftadd.component'
 import { DatePipe } from '@angular/common';
 import { AppliedformComponent } from './appliedform/appliedform.component';
+import { ReapplyComponent } from './reapply/reapply.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { AppliedformComponent } from './appliedform/appliedform.component';
     DialogComponent,
     ShiftaddComponent,
     ApplyComponent,
-    AppliedformComponent
+    AppliedformComponent,
+    ReapplyComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { AppliedformComponent } from './appliedform/appliedform.component';
     MatButtonModule,
     MatCardModule,
     MatRadioModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTabsModule
   ],
   providers: [ApiserviceService, DatePipe],
   bootstrap: [AppComponent]

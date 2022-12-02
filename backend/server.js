@@ -294,6 +294,36 @@ app.get('/accepted-applications', (req, res) => {
     })
 })
 
+app.get('/rejected-applications', (req, res) => {
+    let qr = `select * from rejected_applications`
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('Get all Rejected Applications.')
+            res.send({
+                message: 'Get all Rejected Applications.'
+            })
+        }
+    })
+})
+
+app.post('', (req, res) => {
+    let qr = ``
+
+    db.query(qr, (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('Re-Apply.')
+            res.send({
+                message: ''
+            })
+        }
+    })
+})
+
 app.listen(process.env.PORT, () => {
     console.log('Server Running...' + process.env.PORT)
 });
